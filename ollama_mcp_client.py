@@ -46,6 +46,14 @@ async def call_mcp_tool(session: ClientSession, name: str, args: dict) -> str:
 # ── main loop ────────────────────────────────────────────────────────────────
 
 async def chat(user_message: str):
+    try:
+        ollama.list()
+    except ConnectionError as exc:
+        raise SystemExit(
+            "Cannot connect to Ollama. Install Ollama for Windows, reopen "
+            "PowerShell, and make sure the Ollama app is running."
+        ) from exc
+
     server_params = StdioServerParameters(
         command="python",
         args=[SERVER_SCRIPT],

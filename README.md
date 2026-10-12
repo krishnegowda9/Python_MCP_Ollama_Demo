@@ -12,13 +12,31 @@ tools, then connects those tools to a local Ollama model.
 
 ## Setup on Windows
 
-Open PowerShell in this directory and run:
+1. Install [Ollama for Windows](https://ollama.com/download/windows).
+2. After setup finishes, open a **new** PowerShell window so the Ollama
+   command is available, then check it:
+
+```powershell
+ollama --version
+```
+
+If PowerShell says `ollama` is not recognized, Ollama is not installed or the
+terminal was opened before installation completed. Finish the installation
+and open a new PowerShell window.
+
+3. Open the Ollama app from the Start menu and wait for it to start. In
+   PowerShell, download the model:
+
+```powershell
+ollama pull gemma4:e2b
+```
+
+4. Set up the Python environment from this project directory:
 
 ```powershell
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-ollama pull gemma4:e2b
 ```
 
 If PowerShell blocks virtual-environment activation, use the venv interpreter
@@ -26,7 +44,6 @@ directly instead:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-ollama pull gemma4:e2b
 ```
 
 ## Run
@@ -46,3 +63,6 @@ Or, without activating the venv:
 The client starts `server.py` automatically over standard input/output, fetches
 its tools, and sends a sample prompt to Ollama. To use a different installed
 model, change the `MODEL` value in `ollama_mcp_client.py`.
+
+If the client reports that Ollama cannot be reached, make sure the Ollama app
+is running before starting the client.
