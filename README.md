@@ -145,7 +145,7 @@ ollama pull gemma4:e2b
 In PowerShell, go to the project folder and create a virtual environment:
 
 ```powershell
-cd "C:\Users\kumar\OneDrive\Desktop\Python-mcp-ollama\Python-MCP-Demo"
+cd "C:\Users\krish\OneDrive\Desktop\Python-mcp-ollama\Python-MCP-Demo"
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
